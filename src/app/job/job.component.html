@@ -1,0 +1,69 @@
+  <!-- job.component.html -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      font-family: 'Poppins'
+    }
+  </style>
+
+  <div class="my-10 mx-auto flex w-screen max-w-screen-lg flex-col rounded-3xl bg-green-50 px-4">
+    <p class="mt-20 text-center sm:text-lg font-semibold text-lime-500">Our Blog</p>
+    <h1 class="mx-auto mt-2 max-w-3xl text-center text-2xl font-semibold leading-tight sm:text-4xl md:text-5xl">Resources for makers and creaters to learn, sell & Grow</h1>
+    <p class="mx-auto hidden sm:block mt-4 max-w-5xl text-center text-gray-500 sm:mt-8 sm:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quis deleniti minus ab aliquam nemo.</p>
+
+    <div class="mx-auto mt-8 mb-20 flex w-full flex-col space-y-2 sm:w-auto sm:flex-row sm:space-y-0 sm:space-x-6">
+      <button class="rounded-full bg-black px-10 py-3 font-medium text-white hover:opacity-80 sm:w-auto">Get Started</button>
+      <button class="rounded-full border-2 border-black px-10 py-3 font-medium text-black transition hover:bg-black hover:text-white sm:w-auto">View Pricing</button>
+    </div>
+  </div>
+  <div *ngIf="activeJobs.length === 0">
+    <p>No active jobs available for your college.</p>
+  </div>
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
+    <div *ngFor="let job of activeJobs">
+      <div class="mx-auto my-10 max-w-xs rounded-xl px-6 py-10 text-gray-600 shadow">
+        <p class="mb-2 text-2xl">{{ job.title }}</p>
+        <p 
+          class="mb-6 text-gray-400" 
+          (click)="toggleDescriptionExpanded(job.id)"
+          [innerHTML]="expandedDescriptions[job.id] ? job.description : truncateDescription(job.description)">
+        </p>
+        <div class="flex">
+          <a [href]="job.applyLink">
+            <button class="flex items-center space-x-2 rounded-md border-2 border-blue-500 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-500 hover:text-white">
+              <span> Apply here </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+                  <path fill-rule="evenodd" d="M16.72 7.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 010 1.06l-3.75 3.75a.75.75 0 11-1.06-1.06l2.47-2.47H3a.75.75 0 010-1.5h16.19l-2.47-2.47a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                </svg>
+              </span>
+            </button>
+          </a>
+          <a [href]="job.docLink" class="p-4">DocLink</a>
+        </div>
+        <div class="mt-4 w-44 rounded-md bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">Deadline - {{ job.deadline | date }}</div>
+      </div>
+    </div>  
+  </div>
+  
+    
+  
+
+  <!---
+    <div class="container mx-auto">
+
+    <h2 class="text-xl font-bold mb-2">Inactive Jobs</h2>
+    <div *ngIf="inactiveJobs.length === 0">
+      <p>No inactive jobs available for your college.</p>
+    </div>
+    <div *ngFor="let job of inactiveJobs" class="bg-white shadow-md rounded p-4 mb-4">
+      <h3 class="text-xl font-bold">{{ job.title }}</h3>
+      <p>{{ job.description }}</p>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Deadline:</strong> {{ job.deadline | date }}</p>
+      <p><a [href]="job.applyLink" class="text-blue-500">Apply Here</a></p>
+    </div>
+  </div>
+  -->
+<app-footer></app-footer>

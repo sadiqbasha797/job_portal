@@ -1,0 +1,22 @@
+<div *ngIf="isAdmin; else notAdmin">
+    <h2>Create Announcement</h2>
+    <form (ngSubmit)="createAnnouncement()">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" [(ngModel)]="title" name="title" required />
+      </div>
+      <div>
+        <label for="content">Content:</label>
+        <textarea id="content" [(ngModel)]="content" name="content" required></textarea>
+      </div>
+      <div>
+        <label for="images">Images:</label>
+        <input type="file" id="images" (change)="onFileChange($event)" multiple />
+      </div>
+      <button type="submit">Create Announcement</button>
+    </form>
+  </div>
+  <ng-template #notAdmin>
+    <p>You do not have permission to create announcements.</p>
+  </ng-template>
+  

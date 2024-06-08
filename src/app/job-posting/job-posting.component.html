@@ -1,0 +1,31 @@
+<div *ngIf="isAdmin">
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="bg-green-100">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" formControlName="title" />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+    <div>
+      <label for="location">Location</label>
+      <input id="location" formControlName="location" />
+    </div>
+    <div>
+      <label for="deadline">Deadline</label>
+      <input type="date" id="deadline" formControlName="deadline" />
+    </div>
+    <div>
+      <label for="docLink">Document Link</label>
+      <input id="docLink" formControlName="docLink" />
+    </div>
+    <div>
+      <label for="applyLink">Apply Link</label>
+      <input id="applyLink" formControlName="applyLink" />
+    </div>
+    <input type="hidden" formControlName="college" />
+    <input type="hidden" formControlName="createdBy" />
+    <button type="submit">Post Job</button>
+  </form>
+</div>

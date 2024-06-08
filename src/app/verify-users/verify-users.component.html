@@ -1,0 +1,20 @@
+<div class="container mx-auto p-4">
+    <div *ngIf="unverifiedUsers.length > 0">
+      <h2 class="text-lg font-bold mb-4">Unverified Users</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div *ngFor="let user of unverifiedUsers" class="bg-white shadow-md rounded-lg p-4">
+          <div class="mb-2">
+            <span class="text-lg font-semibold">{{ user.username }}</span>
+            <span class="text-sm text-gray-500">({{ user.email }})</span>
+          </div>
+          <p class="text-sm text-gray-700">{{ user.college }}</p>
+          <button (click)="verifyUser(user._id)" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Verify</button>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="unverifiedUsers.length === 0" class="mt-4">
+      <p class="text-gray-500">No unverified users found.</p>
+    </div>
+  </div>
+  
